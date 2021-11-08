@@ -1,0 +1,28 @@
+FROM elixir:1.12.3
+
+RUN mkdir -p ./app/api
+
+WORKDIR /app/api
+
+COPY . .
+
+RUN apt-get update && apt-get install -y postgresql-client
+ENV DATABASE_URL="postgres://postgres:Sofian@db:5432/theme01_dev"
+ENV PORT=4000
+ENV MIX_ENV="prod"
+ENV SECRET_KEY_BASE ="123456789"
+
+ADD https://github.com/ufoscout/docker-compose-wait/releases/download/2.9.0/wait /wait
+RUN chmod +x /wait
+
+# Create app directory and copy the Elixir proje
+# Install hex package manager
+RUN mix local.hex --force
+RUN mix local.rebar --force
+RUN mix phx.digest --force 
+
+# Compile the project
+RUN mix deps.get 
+RUN mix do compile --force
+
+#CMD ["./entrypoint.sh"]

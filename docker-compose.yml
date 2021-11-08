@@ -1,0 +1,57 @@
+version: "3.4"
+services:
+  phoenix:
+    restart: always
+    build:
+      context: ./Back
+    command: >
+      bash entrypoint.sh
+    environment:
+      WAIT_HOST: db:5432 
+      PGSER: postgres
+      PGPASSWORD: Sofian
+      PGDATABASE: theme01_dev
+      PGPORT: 5432
+      PGHOST: db
+    ports:
+      - "4000:4000"
+    depends_on:
+      - db
+    networks:
+      - db-tier
+
+  db:
+    restart: always
+    image: postgres:9.6
+    container_name: db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Sofian
+      POSTGRES_DB: theme01_dev
+
+    networks:
+      - db-tier
+    ports:
+      - "5432:5432"
+
+  my-app:
+    build:
+      context: ./my-app
+    ports:
+      - '8081:8080'
+    depends_on:
+      - phoenix
+  
+  adminer:
+    image: adminer
+    ports:
+      - "9000:8080"
+    networks:
+      - db-tier
+  
+volumes:
+  db-data:
+
+networks:
+  db-tier:
+    driver: bridge
