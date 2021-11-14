@@ -7,15 +7,15 @@
 # General application configuration
 import Config
 
-config :theme01,
-  ecto_repos: [Theme01.Repo]
+config :timemanager,
+  ecto_repos: [Timemanager.Repo]
 
 # Configures the endpoint
-config :theme01, Theme01Web.Endpoint,
+config :timemanager, TimemanagerWeb.Endpoint,
   url: [host: "localhost"],
-  render_errors: [view: Theme01Web.ErrorView, accepts: ~w(html json), layout: false],
-  pubsub_server: Theme01.PubSub,
-  live_view: [signing_salt: "8sFNVgMC"]
+  render_errors: [view: TimemanagerWeb.ErrorView, accepts: ~w(html json), layout: false],
+  pubsub_server: Timemanager.PubSub,
+  live_view: [signing_salt: "SXwUskOY"]
 
 # Configures the mailer
 #
@@ -24,7 +24,7 @@ config :theme01, Theme01Web.Endpoint,
 #
 # For production it's recommended to configure a different adapter
 # at the `config/runtime.exs`.
-config :theme01, Theme01.Mailer, adapter: Swoosh.Adapters.Local
+config :timemanager, Timemanager.Mailer, adapter: Swoosh.Adapters.Local
 
 # Swoosh API client is needed for adapters other than SMTP.
 config :swoosh, :api_client, false
@@ -50,3 +50,9 @@ config :phoenix, :json_library, Jason
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{config_env()}.exs"
+
+# Config joken
+config :joken, default_signer: [
+  signer_alg: "HS256",
+  key_octet: "8A8F23BDAE183BCF6C7608FE3FC46E7F9DFBB8DBAE7398E2AA7BFDA37F64C991",
+]

@@ -19,10 +19,11 @@ RUN chmod +x /wait
 # Install hex package manager
 RUN mix local.hex --force
 RUN mix local.rebar --force
-RUN mix phx.digest --force 
+
 
 # Compile the project
 RUN mix deps.get 
+RUN mix phx.digest --force
 RUN mix do compile --force
 
 #CMD ["./entrypoint.sh"]

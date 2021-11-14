@@ -1,18 +1,30 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div>
+    <Navigation />
+    </div>
+    <div class="body">
+    <HelloWorld msg="Welcome to Your Time Manager "/>
+    </div>
   </div>
 </template>
-
 <script>
 // @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld.vue'
+import Navigation from "@/components/Navigation";
+
 
 export default {
   name: 'Home',
   components: {
-    HelloWorld
+    HelloWorld,
+    Navigation
   }
 }
 </script>
+
+<style>
+.body {
+   padding-top: 180px; 
+   }
+</style>

@@ -1,14 +1,21 @@
 <template>
   <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link> |
-    <router-link to="/createUser">Create User</router-link>
+    <Navigation />
+  <router-view/>
   </div>
   
-  <router-view/>
 </template>
-
+<script>
+import Navigation from "@/components/Navigation";
+export default {
+  name: "App",
+  component:{
+    Navigation
+  }
+};
+</script>
 <style>
+@import'~bootstrap/dist/css/bootstrap.css';
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -23,10 +30,11 @@
 
 #nav a {
   font-weight: bold;
-  color: #2c3e50;
+  color: #fff;
 }
 
 #nav a.router-link-exact-active {
   color: #42b983;
 }
+
 </style>

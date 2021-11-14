@@ -1,4 +1,4 @@
-# Theme01
+# Timemanager
 
 To start your Phoenix server:
 

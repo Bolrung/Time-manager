@@ -1,10 +1,10 @@
 import Config
 
 # Configure your database
-config :theme01, Theme01.Repo,
+config :timemanager, Timemanager.Repo,
   username: "postgres",
-  password: "Sofian",
-  database: "theme01_dev",
+  password: "postgres",
+  database: "Timemanager",
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
@@ -15,14 +15,14 @@ config :theme01, Theme01.Repo,
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we use it
 # with esbuild to bundle .js and .css sources.
-config :theme01, Theme01Web.Endpoint,
+config :timemanager, TimemanagerWeb.Endpoint,
   # Binding to loopback ipv4 address prevents access from other machines.
   # Change to `ip: {0, 0, 0, 0}` to allow access from other machines.
   http: [ip: {127, 0, 0, 1}, port: 4000],
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
-  secret_key_base: "MCgm/mHIXddwRCVMO3YBHBvAlEPyTbiKb2eQJmsWwpG0SWXxY0oME0E3CyunoKAk",
+  secret_key_base: "dRdgsL+8nuFZsRcnkFV6F9I1XZSCUzkgTpf+BvqYmGUegy59JpKVcw0So5wx+mHs",
   watchers: [
     # Start the esbuild watcher by calling Esbuild.install_and_run(:default, args)
     esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]}
@@ -53,13 +53,13 @@ config :theme01, Theme01Web.Endpoint,
 # different ports.
 
 # Watch static and templates for browser reloading.
-config :theme01, Theme01Web.Endpoint,
+config :timemanager, TimemanagerWeb.Endpoint,
   live_reload: [
     patterns: [
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
-      ~r"lib/theme01_web/(live|views)/.*(ex)$",
-      ~r"lib/theme01_web/templates/.*(eex)$"
+      ~r"lib/timemanager_web/(live|views)/.*(ex)$",
+      ~r"lib/timemanager_web/templates/.*(eex)$"
     ]
   ]
 
